@@ -8,6 +8,7 @@ def clean_tasks
 end
 
 Given /^I added tasks$/ do
+  clean_tasks
   add_task "Task1"
   add_task "Task2"
   add_task "Task3"
