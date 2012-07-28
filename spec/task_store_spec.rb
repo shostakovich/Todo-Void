@@ -1,6 +1,13 @@
 require_relative '../lib/task_store'
 require_relative '../lib/task'
 
+class TaskStore
+  private
+  def task_file
+    '/tmp/tasks'
+  end
+end
+
 describe TaskStore do
   before do
     system "rm /tmp/tasks"

@@ -1,5 +1,12 @@
 require_relative '../../lib/task_void'
 
+class TaskStore
+  private
+  def task_file
+    '/tmp/tasks'
+  end
+end
+
 Given /^An empty task list$/ do
   system 'rm /tmp/tasks'
   system 'touch /tmp/tasks'

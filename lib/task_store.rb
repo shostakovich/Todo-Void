@@ -3,7 +3,7 @@ require_relative './task'
 
 class TaskStore
   def read 
-    file = File.new('/tmp/tasks', 'r')
+    file = File.new(task_file, 'r')
     task_list = TaskList.new 
     
     raw_tasks = file.readlines
@@ -20,7 +20,7 @@ class TaskStore
   end
 
   def save(list)
-    file = File.new('/tmp/tasks', 'w')
+    file = File.new(task_file, 'w')
 
     tasks = list.tasks
     tasks.each do |id, task|
@@ -28,5 +28,10 @@ class TaskStore
     end
     
     file.close
+  end
+
+  private
+  def task_file
+    Dir.home + '/.tasks'
   end
 end
