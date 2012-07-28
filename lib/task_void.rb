@@ -1,5 +1,5 @@
 require_relative '../interactors/task_interactor.rb'
-require_relative './task_view.rb'
+require_relative './task_list_view.rb'
 
 class TaskVoid
   def self.execute(args)
@@ -13,11 +13,8 @@ class TaskVoid
     elsif(args[0])
       interactor.add_task(args[0])
     else
-      interactor.list_all.each do |task|
-        output += TaskView.new(task).render
-        output += "\n"
-      end
+      view = TaskListView.new(interactor.list_all)
+      view.render
     end
-    output
   end
 end
