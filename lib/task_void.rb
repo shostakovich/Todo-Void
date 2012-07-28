@@ -8,6 +8,8 @@ class TaskVoid
     
     if args[0] == "-d"
       interactor.delete_task(args[1])
+    elsif(args[0] == "--help")
+      output += "Help:\nt 'Mowing the lawn' in order to create a task\n-f ID to finish a task\n-d ID to delete a task"
     elsif(args[0] == "-f")
       interactor.finish_task(args[1])
     elsif(args[0])
