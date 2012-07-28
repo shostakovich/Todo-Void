@@ -9,8 +9,11 @@ class TaskList
     @tasks.store(task.id, task)
   end
 
-  def find(hash)
-    @tasks[hash]
+  def find(search)
+    @tasks.each do |id, task|
+      return task if /^#{search}/.match id
+    end
+    nil
   end
 
   def remove(hash)

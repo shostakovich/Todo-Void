@@ -16,9 +16,14 @@ describe TaskList do
     list.tasks.length.should == 0
   end
 
-  it "can find a task" do
+  it "can find a task by its full hash" do
     list.add task
     list.find(task.id).should == task
+  end
+
+  it "can find a task by a part of the hash" do
+    list.add task
+    list.find(task.id.slice(0..2)).should == task
   end
 
   it "does not take duplicate tasks" do
