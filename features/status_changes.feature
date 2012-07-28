@@ -8,3 +8,8 @@ Feature: Changing status of tasks
     Given I added tasks
     When I provide the option "-f" plus the hash of a task
     Then this task should be marked finished
+
+  Scenario: Finish a task by partial hash
+    Given I added tasks
+    When I provide the opion "-f" plus the partial hash of a task
+    Then this task should be marked finished
