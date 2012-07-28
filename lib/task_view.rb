@@ -6,6 +6,10 @@ class TaskView
   end
 
   def render
-    "#{@task.id.foreground(:yellow)} #{@task.description}"
+    if @task.status == :finished
+      "#{@task.id} #{@task.description}".foreground(:black)
+    else
+      "#{@task.id.foreground(:yellow)} #{@task.description}"
+    end
   end
 end
