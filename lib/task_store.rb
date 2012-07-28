@@ -10,8 +10,10 @@ class TaskStore
     file.close
 
     raw_tasks.each do |line|
-      description = line.gsub("\n", "")
+      line = line.gsub("\n", "")
+      status, description = line.split "||"
       task = Task.new(description)
+      task.status = status.to_sym
       task_list.add task
     end
     task_list
@@ -21,8 +23,8 @@ class TaskStore
     file = File.new('/tmp/tasks', 'w')
 
     tasks = list.tasks
-    tasks.each do |task|
-      file.write("#{task.description}\n")
+    tasks.each do |id, task|
+      file.write("#{task.status}||#{task.description}\n")
     end
     
     file.close

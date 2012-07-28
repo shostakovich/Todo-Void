@@ -12,12 +12,22 @@ class TaskInteractor
   end
 
   def delete_task(hash)
-    @list.remove(ARGV[1])
+    @list.remove(hash)
+    save_list
+  end
+
+  def finish_task(hash)
+    task = @list.find(hash)
+    @list.remove(task)
+    task.status = :finished
+    @list.add(task)
     save_list
   end
 
   def list_all
-    @list.tasks
+    tasks = []
+    @list.tasks.each do |id, task| tasks << task end
+    tasks
   end
 
   private

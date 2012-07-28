@@ -2,15 +2,18 @@ class TaskList
   attr_reader :tasks
   
   def initialize
-    @tasks = []
+    @tasks = {}
   end
 
-  def add(description)
-    task = description
-    @tasks << task
+  def add(task)
+    @tasks.store(task.id, task)
+  end
+
+  def find(hash)
+    @tasks[hash]
   end
 
   def remove(hash)
-    @tasks.reject!{|task| task.id == hash}
+    @tasks.delete(hash)
   end
 end

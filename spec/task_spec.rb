@@ -10,5 +10,16 @@ describe Task do
     task = Task.new "Foobar"
     task.id.should be == "275f60"
   end
+
+  it "is pending once created" do
+    task = Task.new "Foobar"
+    task.status.should be == :pending
+  end
+
+  it "can be finished" do
+    task= Task.new "Foobar"
+    task.status = :finished
+    task.status.should be == :finished
+  end
 end
 

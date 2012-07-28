@@ -8,7 +8,11 @@ describe TaskStore do
   end
 
   let(:store){ TaskStore.new }
-  let(:task) { Task.new "Test the task store" }
+  let(:task) do 
+    task = Task.new "Test the task store"
+    task.status = :finished
+    task
+  end
 
   it "returns a tasklist on read" do
     store.read.tasks.length.should == 0
@@ -17,9 +21,9 @@ describe TaskStore do
   it "stores a TaskList with one task and retrieve it" do
     list = TaskList.new
     list.add task
-
     store.save(list)
+
     store = TaskStore.new
-    store.read.tasks[0].id.should == task.id
+    store.read.tasks[task.id]
   end
 end

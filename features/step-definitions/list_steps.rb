@@ -1,5 +1,8 @@
+require_relative '../../interactors/task_interactor'
+require_relative '../../lib/task_void'
+
 def add_task(task)
-  system "/Users/shostakovich/Ruby/task-void/task.rb '#{task}'"
+  TaskInteractor.new.add_task(task)
 end
 
 def clean_tasks
@@ -15,7 +18,7 @@ Given /^I added tasks$/ do
 end
 
 When /^I run the task command$/ do
-  @output = %x[/Users/shostakovich/Ruby/task-void/task.rb]
+  @output = TaskVoid.execute([])
 end
 
 Then /^I should see a list of tasks$/ do
@@ -25,5 +28,5 @@ Then /^I should see a list of tasks$/ do
 end
 
 Then /^every task should have a unique number in front of it$/ do
-  @output.should =~ /d7cec7 Task1/
+  @output.should =~ /d7cec7/
 end

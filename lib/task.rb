@@ -2,9 +2,11 @@ require 'openssl'
 
 class Task
   attr_reader :description
+  attr_accessor :status
 
   def initialize(description)
     @description = description
+    @status = :pending
   end
 
   def id
