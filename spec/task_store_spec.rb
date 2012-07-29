@@ -1,36 +1,36 @@
-require_relative '../lib/task_store'
-require_relative '../lib/task'
+require_relative '../lib/todo_store'
+require_relative '../lib/todo'
 
-class TaskStore
+class TodoStore
   private
-  def task_file
-    '/tmp/tasks'
+  def todo_file
+    '/tmp/todos'
   end
 end
 
-describe TaskStore do
+describe TodoStore do
   before do
-    system "rm /tmp/tasks"
-    system "touch /tmp/tasks"
+    system "rm /tmp/todos"
+    system "touch /tmp/todos"
   end
 
-  let(:store){ TaskStore.new }
-  let(:task) do 
-    task = Task.new "Test the task store"
-    task.status = :finished
-    task
+  let(:store){ TodoStore.new }
+  let(:todo) do
+    todo = Todo.new "Test the todo store"
+    todo.status = :finished
+    todo
   end
 
-  it "returns a tasklist on read" do
-    store.read.tasks.length.should == 0
+  it "returns a TodoList on read" do
+    store.read.todo.length.should == 0
   end
 
-  it "stores a TaskList with one task and retrieve it" do
-    list = TaskList.new
-    list.add task
+  it "stores and retrieves TodoList with one todo" do
+    list = TodoList.new
+    list.add todo
     store.save(list)
 
-    store = TaskStore.new
-    store.read.tasks[task.id]
+    store = TodoStore.new
+    store.read.todo[todo.id]
   end
 end

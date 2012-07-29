@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require_relative './lib/task_void'
+require_relative './lib/todo_void'
 
-puts TaskVoid.execute(ARGV)
+puts TodoVoid.execute(ARGV)

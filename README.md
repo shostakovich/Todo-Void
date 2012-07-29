@@ -1,6 +1,6 @@
-# Task-Void
+# Todo-Void
 
-A simple application to remember stuff things to be done.
+A simple application to remember stuff to be done.
 
 ## Use
 
@@ -10,4 +10,4 @@ Adds a task to mow the lawn
 
 	t
 
-Shows a lisk of your tasks
+Shows a lisk of your todos

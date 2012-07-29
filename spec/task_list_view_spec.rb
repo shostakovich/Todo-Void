@@ -1,24 +1,24 @@
-require_relative "../lib/task"
-require_relative "../lib/task_list_view"
+require_relative "../lib/todo"
+require_relative "../lib/todo_list_view"
 
-describe TaskListView do
-  it "displays the started tasks before the pending" do
-    pending_task = Task.new "Task1"
+describe TodoListView do
+  it "displays the started todos before the pending" do
+    pending_todo = Todo.new "Todo1"
 
-    started_task = Task.new "Task2" 
-    started_task.status = :started
+    started_todo = Todo.new "Todo2"
+    started_todo.status = :started
 
-    view = TaskListView.new([pending_task, started_task])
-    view.render.should =~ /#{started_task.id}.*#{pending_task.id}/m
+    view = TodoListView.new([pending_todo, started_todo])
+    view.render.should =~ /#{started_todo.id}.*#{pending_todo.id}/m
   end
 
-  it "displays the pending tasks before the finished" do
-    finished_task = Task.new "Task1"
-    finished_task.status = :finished
+  it "displays the pending todos before the finished" do
+    finished_todo = Todo.new "Todo1"
+    finished_todo.status = :finished
 
-    pending_task = Task.new "Task2"
+    pending_todo = Todo.new "Todo2"
     
-    view = TaskListView.new([finished_task, pending_task])
-    view.render.should =~ /#{pending_task.id}.*#{finished_task.id}/m
+    view = TodoListView.new([finished_todo, pending_todo])
+    view.render.should =~ /#{pending_todo.id}.*#{finished_todo.id}/m
   end
 end

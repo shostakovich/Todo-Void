@@ -1,22 +1,22 @@
-When /^I provide the option "(.*?)" plus the hash of a task$/ do |option|
-  TaskVoid.execute([option, "d7cec7"])
+When /^I provide the option "(.*?)" plus the hash of a todo$/ do |option|
+  TodoVoid.execute([option, "cab959"])
 end
 
-When /^I provide the opion "(.*?)" plus the partial hash of a task$/ do |option|
-  TaskVoid.execute([option, "d7"])
+When /^I provide the opion "(.*?)" plus the partial hash of a todo$/ do |option|
+  TodoVoid.execute([option, "ca"])
 end
 
-Then "this task should be deleted" do
-  output = TaskVoid.execute([])
-  output.should_not =~  /d7cec7/
+Then "this todo should be deleted" do
+  output = TodoVoid.execute([])
+  output.should_not =~  /cab959/
 end
 
-Then "this task should be marked finished" do
-  output = TaskVoid.execute([])
-  output.should =~ /\e\[30md7cec7 Task1/
+Then "this todo should be marked finished" do
+  output = TodoVoid.execute([])
+  output.should =~ /\e\[30mcab959 todo1/
 end
 
-Then "this task should be marked current" do
-  output = TaskVoid.execute([])
-  output.should =~ /\e\[32md7cec7/
+Then "this todo should be marked current" do
+  output = TodoVoid.execute([])
+  output.should =~ /\e\[32mcab959/
 end

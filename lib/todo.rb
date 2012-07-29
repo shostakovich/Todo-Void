@@ -1,6 +1,6 @@
 require 'openssl'
 
-class Task
+class Todo
   attr_reader :description
   attr_accessor :status
 
@@ -11,7 +11,7 @@ class Task
 
   def id
     description_hash = OpenSSL::Digest::SHA1.new(@description)
-    task_id = description_hash.hexdigest
-    task_id.slice(0..5)
+    description_hash = description_hash.hexdigest
+    description_hash.slice(0..5)
   end
 end

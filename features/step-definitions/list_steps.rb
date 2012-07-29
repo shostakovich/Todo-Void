@@ -1,32 +1,32 @@
-require_relative '../../interactors/task_interactor'
-require_relative '../../lib/task_void'
+require_relative '../../interactors/todo_interactor'
+require_relative '../../lib/todo_void'
 
-def add_task(task)
-  TaskInteractor.new.add_task(task)
+def add_todo(todo)
+  TodoInteractor.new.add_todo(todo)
 end
 
-def clean_tasks
-  system "rm /tmp/tasks"
-  system "touch /tmp/tasks"
+def clean_todos
+  system "rm /tmp/todos"
+  system "touch /tmp/todos"
 end
 
-Given /^I added tasks$/ do
-  clean_tasks
-  add_task "Task1"
-  add_task "Task2"
-  add_task "Task3"
+Given "I added todos" do
+  clean_todos
+  add_todo "todo1"
+  add_todo "todo2"
+  add_todo "todo3"
 end
 
-When /^I run the task command$/ do
-  @output = TaskVoid.execute([])
+When "I run the todo command" do
+  @output = TodoVoid.execute([])
 end
 
-Then /^I should see a list of tasks$/ do
-  @output.should =~ /Task1/
-  @output.should =~ /Task2/
-  @output.should =~ /Task3/
+Then "I should see a list of todos" do
+  @output.should =~ /todo1/
+  @output.should =~ /todo2/
+  @output.should =~ /todo3/
 end
 
-Then /^every task should have a unique number in front of it$/ do
-  @output.should =~ /d7cec7/
+Then "every todo should have a unique number in front of it" do
+  @output.should =~ /cab959/
 end

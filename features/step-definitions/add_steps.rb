@@ -1,23 +1,23 @@
-require_relative '../../lib/task_void'
+require_relative '../../lib/todo_void'
 
-class TaskStore
+class TodoStore
   private
-  def task_file
-    '/tmp/tasks'
+  def todo_file
+    '/tmp/todos'
   end
 end
 
-Given /^An empty task list$/ do
-  system 'rm /tmp/tasks'
-  system 'touch /tmp/tasks'
+Given "An empty todo list" do
+  system 'rm /tmp/todos'
+  system 'touch /tmp/todos'
 end
 
-When /^I add a task$/ do
-  @task_name = "Mowing lawn"
-  TaskVoid.execute([@task_name])
+When "I add a todo" do
+  @todo_name = "Mowing lawn"
+  TodoVoid.execute([@todo_name])
 end
 
-Then /^the task should appear in the list of tasks$/ do
-  output = TaskVoid.execute([])
-  output.should =~/#{@task_name}/
+Then "the todo should appear in the list of todos" do
+  output = TodoVoid.execute([])
+  output.should =~/#{@todo_name}/
 end

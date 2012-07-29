@@ -1,34 +1,34 @@
-require_relative '../lib/task_list'
-require_relative '../lib/task'
+require_relative '../lib/todo_list'
+require_relative '../lib/todo'
 
-describe TaskList do
-  let(:list){ TaskList.new }
-  let(:task){ Task.new "Mow the lawn" }
+describe TodoList do
+  let(:list){ TodoList.new }
+  let(:todo){ Todo.new "Mow the lawn" }
 
-  it "accepts new tasks" do
-    list.add task
-    list.tasks[task.id].should be == task
+  it "accepts a todo" do
+    list.add todo
+    list.todo[todo.id].should be == todo
   end
 
-  it "can remove tasks" do
-    list.add task
-    list.remove(task.id)
-    list.tasks.length.should == 0
+  it "can remove a todo" do
+    list.add todo
+    list.remove(todo.id)
+    list.todo.length.should == 0
   end
 
-  it "can find a task by its full hash" do
-    list.add task
-    list.find(task.id).should == task
+  it "can find a todo by its full hash" do
+    list.add todo
+    list.find(todo.id).should == todo
   end
 
-  it "can find a task by a part of the hash" do
-    list.add task
-    list.find(task.id.slice(0..2)).should == task
+  it "can find a todo by a part of the hash" do
+    list.add todo
+    list.find(todo.id.slice(0..2)).should == todo
   end
 
-  it "does not take duplicate tasks" do
-    list.add task
-    list.add task
-    list.tasks.length.should == 1
+  it "prevents duplication of todos" do
+    list.add todo
+    list.add todo
+    list.todo.length.should == 1
   end
 end

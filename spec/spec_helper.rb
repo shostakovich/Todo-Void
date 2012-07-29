@@ -1,6 +1,6 @@
-class TaskStore
+class TodoStore
   private
-  def task_file
-    '/tmp/tasks'
+  def todo_file
+    '/tmp/todos'
   end
 end
