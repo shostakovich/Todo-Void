@@ -17,11 +17,11 @@ class TaskInteractor
   end
 
   def finish_task(hash)
-    task = @list.find(hash)
-    @list.remove(task)
-    task.status = :finished
-    @list.add(task)
-    save_list
+    change_task_status(hash, :finished)
+  end
+
+  def start_task(hash)
+    change_task_status(hash, :started)
   end
 
   def list_all
@@ -31,6 +31,14 @@ class TaskInteractor
   end
 
   private
+  def change_task_status(hash, status)
+    task = @list.find(hash)
+    @list.remove(task)
+    task.status = status
+    @list.add(task)
+    save_list
+  end
+
   def save_list
     @store.save(@list)
   end

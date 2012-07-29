@@ -16,3 +16,7 @@ Then "this task should be marked finished" do
   output.should =~ /\e\[30md7cec7 Task1/
 end
 
+Then "this task should be marked current" do
+  output = TaskVoid.execute([])
+  output.should =~ /\e\[32md7cec7/
+end
