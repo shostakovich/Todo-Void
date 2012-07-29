@@ -1,13 +1,13 @@
 require_relative "./task_list"
 require_relative './task'
+require 'fileutils'
 
 class TaskStore
   def read 
-    file = File.new(task_file, 'r')
     task_list = TaskList.new 
-    
-    raw_tasks = file.readlines
-    file.close
+
+    FileUtils.touch(task_file)
+    raw_tasks = File.readlines(task_file)
 
     raw_tasks.each do |line|
       line = line.gsub("\n", "")
@@ -16,18 +16,18 @@ class TaskStore
       task.status = status.to_sym
       task_list.add task
     end
+
     task_list
   end
 
   def save(list)
-    file = File.new(task_file, 'w')
-
+    serialized_tasks = ""
     tasks = list.tasks
     tasks.each do |id, task|
-      file.write("#{task.status}||#{task.description}\n")
+      serialized_tasks += "#{task.status}||#{task.description}\n"
     end
-    
-    file.close
+
+    File.write(task_file, serialized_tasks)
   end
 
   private
