@@ -10,18 +10,18 @@ describe TodoList do
     list.todo[todo.id].should be == todo
   end
 
-  it "can remove a todo" do
+  it "removes a todo" do
     list.add todo
     list.remove(todo.id)
     list.todo.length.should == 0
   end
 
-  it "can find a todo by its full hash" do
+  it "finds a todo by its full hash" do
     list.add todo
     list.find(todo.id).should == todo
   end
 
-  it "can find a todo by a part of the hash" do
+  it "finds a todo by a part of the hash" do
     list.add todo
     list.find(todo.id.slice(0..2)).should == todo
   end
