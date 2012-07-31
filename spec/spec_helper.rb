@@ -1,4 +1,3 @@
-require 'require_relative'
 class TodoStore
   private
   def todo_file
