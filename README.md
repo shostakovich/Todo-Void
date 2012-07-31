@@ -1,4 +1,6 @@
 # Todo-Void
+[![Build Status](https://secure.travis-ci.org/shostakovich/Todo-Void.png)](http://travis-ci.org/shostakovich/TodoVoid)
+
 
 A simple application to remember stuff to be done.
 
