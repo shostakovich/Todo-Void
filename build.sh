@@ -1,3 +1,2 @@
 #!/bin/sh
-bundle exec rspec
-bundle exec cucumber
+bundle exec rspec && bundle exec cucumber
