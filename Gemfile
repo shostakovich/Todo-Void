@@ -5,4 +5,4 @@ gem 'pry'
 gem 'rainbow'
 
 # Fixes missing require_relative in older rubies
-gem 'require_relative', :require => ["require_relative"]
+gem 'require_relative'

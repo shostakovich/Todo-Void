@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'require_relative'
 require_relative '../lib/todo_void'
 
 puts TodoVoid.execute(ARGV)
