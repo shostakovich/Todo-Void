@@ -21,13 +21,13 @@ class TodoStore
   end
 
   def save(list)
-    seriaized_todos = ""
+    serialized_todos = ""
     todos = list.todo
     todos.each do |id, todo|
-      seriaized_todos += "#{todo.status}||#{todo.description}\n"
+      serialized_todos += "#{todo.status}||#{todo.description}\n"
     end
 
-    File.write(todo_file, seriaized_todos)
+    File.open(todo_file, "w") {|f| f.write serialized_todos }
   end
 
   private
