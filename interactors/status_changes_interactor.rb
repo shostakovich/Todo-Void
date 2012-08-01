@@ -14,10 +14,14 @@ class StatusChangesInteractor
 
   private
   def change_todo_status(hash, status)
-    todo = @list.find(hash)
-    @list.remove(todo)
-    todo.status = status
-    @list.add(todo)
-    @store.save(@list)
+    found_todos = @list.find(hash)
+    if found_todos.length == 1
+      found_todos.todo.each do |key, todo|
+        @list.remove(todo)
+        todo.status = status
+        @list.add(todo)
+      end
+      @store.save(@list)
+    end
   end
 end

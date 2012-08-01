@@ -10,10 +10,19 @@ class TodoList
   end
 
   def find(search)
+    list = TodoList.new
     @todo.each do |id, todo|
-      return todo if /^#{search}/.match id
+      list.add todo if /^#{search}/.match id
     end
-    nil
+    list
+  end
+
+  def length
+    @todo.length
+  end
+
+  def empty?
+    @todo.length == 0
   end
 
   def remove(hash)
