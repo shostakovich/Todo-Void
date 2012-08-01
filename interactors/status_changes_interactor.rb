@@ -9,7 +9,7 @@ class StatusChangesInteractor
 
   def initialize(store = TodoStore.new)
     @store = store
-    @list = @store.read
+    @list = @store.todos
   end
 
   def change_status(hash, status)
@@ -18,16 +18,13 @@ class StatusChangesInteractor
 
   private
   def change_todo_status(hash, status)
-    found_todos = @list.find(hash)
+    todos = @list.find(hash).to_array
     
-    if found_todos.length > 1
-      raise ConflictingIdsError.new(found_todos.to_array)
-    elsif found_todos.length == 1
-      found_todos.todo.each do |key, todo|
-        todo.status = status
-        @list.update(todo)
-      end
-      @store.save(@list)
+    if todos.length > 1
+      raise ConflictingIdsError.new(todos)
+    elsif todos.length == 1
+      todos[0].status = status
+      @store.update(todos[0])
     end
   end
 end

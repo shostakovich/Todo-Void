@@ -23,15 +23,20 @@ describe TodoStore do
   end
 
   it "returns a TodoList on read" do
-    store.read.todo.length.should == 0
+    store.todos.todo.length.should == 0
   end
 
-  it "stores and retrieves TodoList with one todo" do
-    list = TodoList.new
-    list.add todo
-    store.save(list)
+  it "stores and retrieves a todo" do
+    store.save(todo)
 
     store = TodoStore.new
-    store.read.todo[todo.id]
+    store.todos.todo[todo.id].id == todo.id
+  end
+
+  it "updates todos" do
+    store.save(todo)
+    todo.status = :updated
+    store = TodoStore.new
+    store.todos.todo[todo.id].status == :updated
   end
 end

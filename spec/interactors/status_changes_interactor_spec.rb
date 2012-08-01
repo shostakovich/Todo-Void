@@ -5,7 +5,7 @@ require_relative '../../lib/todo'
 
 describe StatusChangesInteractor do
   let(:list){ TodoList.new }
-  let(:store) { stub(:read => list) }
+  let(:store) { stub(:todos => list) }
   let(:interactor) { StatusChangesInteractor.new store }
 
   context 'with conflicting ids' do

@@ -3,15 +3,13 @@ require_relative '../lib/todo_store'
 class TodoInteractor
   def initialize(store = TodoStore.new)
     @store = store
-    @list = @store.read
   end
   
   def add_todo(description)
-    @list.add(Todo.new(description))
-    @store.save(@list)
+    @store.save(Todo.new(description))
   end
 
   def list_all
-    @list.to_array
+    @store.todos.to_array
   end
 end

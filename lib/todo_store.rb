@@ -3,7 +3,26 @@ require_relative './todo'
 require 'fileutils'
 
 class TodoStore
-  def read 
+  def initialize
+    read
+  end
+
+  def todos
+    @list
+  end
+
+  def update(todo)
+    @list.update(todo)
+    write
+  end
+
+  def save(todo)
+    @list.add(todo)
+    write
+  end
+
+  private
+  def read
     todo_list = TodoList.new
 
     FileUtils.touch(todo_file)
@@ -17,12 +36,13 @@ class TodoStore
       todo_list.add todo
     end
 
-    todo_list
+    @list = todo_list
   end
 
-  def save(list)
+  def write
     serialized_todos = ""
-    todos = list.todo
+    
+    todos = @list.todo
     todos.each do |id, todo|
       serialized_todos += "#{todo.status}||#{todo.description}\n"
     end
@@ -30,7 +50,6 @@ class TodoStore
     File.open(todo_file, "w") {|f| f.write serialized_todos }
   end
 
-  private
   def todo_file
     Dir.home + '/.todos'
   end
