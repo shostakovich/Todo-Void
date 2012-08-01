@@ -20,12 +20,12 @@ describe StatusChangesInteractor do
       list.add Todo.new "todo3"
       list.add Todo.new "todo311013"
 
-      lambda { interactor.finish_todo('18') }.should raise_error StatusChangesInteractor::ConflictingIdsError
+      lambda { interactor.change_status('18', :finished) }.should raise_error StatusChangesInteractor::ConflictingIdsError
     end
 
     it 'includes the conflicting todos in the error' do
       begin
-        interactor.finish_todo('18')
+        interactor.change_status('18', :finished)
       rescue StatusChangesInteractor::ConflictingIdsError => e
         e.conflicting_todos.length.should == 2
       end

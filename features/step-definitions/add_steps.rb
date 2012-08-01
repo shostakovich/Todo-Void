@@ -15,10 +15,11 @@ end
 
 When "I add a todo" do
   @todo_name = "Mowing lawn"
-  TodoVoid.execute([@todo_name])
+  app = TodoVoid.new([@todo_name])
+  app.execute
 end
 
 Then "the todo should appear in the list of todos" do
-  output = TodoVoid.execute([])
+  output = TodoVoid.new.execute
   output.should =~/#{@todo_name}/
 end

@@ -1,5 +1,5 @@
 When /^I provide the option "\-\-help$/ do
-  @output = TodoVoid.execute(["--help"])
+  @output = TodoVoid.new(["--help"]).execute
 end
 
 Then /^I should get help on how to use the program$/ do

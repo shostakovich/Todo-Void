@@ -25,8 +25,9 @@ class TodoList
     @todo.length == 0
   end
 
-  def remove(hash)
-    @todo.delete(hash)
+  def update(todo)
+    @todo.delete(todo.id)
+    @todo[todo.id] = todo
   end
 
   def to_array

@@ -19,7 +19,7 @@ Given "I added todos" do
 end
 
 When "I run the todo command" do
-  @output = TodoVoid.execute([])
+  @output = TodoVoid.new.execute
 end
 
 Then "I should see a list of todos" do

@@ -2,4 +2,5 @@
 require 'require_relative'
 require_relative '../lib/todo_void'
 
-puts TodoVoid.execute(ARGV)
+app = TodoVoid.new(ARGV)
+puts app.execute

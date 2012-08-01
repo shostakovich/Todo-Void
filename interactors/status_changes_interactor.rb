@@ -12,12 +12,8 @@ class StatusChangesInteractor
     @list = @store.read
   end
 
-  def finish_todo(hash)
-    change_todo_status(hash, :finished)
-  end
-
-  def start_todo(hash)
-    change_todo_status(hash, :started)
+  def change_status(hash, status)
+    change_todo_status(hash, status)
   end
 
   private
@@ -28,9 +24,8 @@ class StatusChangesInteractor
       raise ConflictingIdsError.new(found_todos.to_array)
     elsif found_todos.length == 1
       found_todos.todo.each do |key, todo|
-        @list.remove(todo)
         todo.status = status
-        @list.add(todo)
+        @list.update(todo)
       end
       @store.save(@list)
     end

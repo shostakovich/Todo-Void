@@ -1,27 +1,27 @@
 When /^I provide the option "(.*?)" plus the hash of a todo$/ do |option|
-  TodoVoid.execute([option, "cab959"])
+  TodoVoid.new([option, "cab959"]).execute
 end
 
 When /^I provide the opion "(.*?)" plus the partial hash of a todo$/ do |option|
-  TodoVoid.execute([option, "ca"])
+  TodoVoid.new([option, "ca"]).execute
 end
 
 When /I provide the option "(.*?)" and a conflicting partial hash/ do |option|
-  @output = TodoVoid.execute([option, "18"])
+  @output = TodoVoid.new([option, "18"]).execute
 end
 
 Then "this todo should be deleted" do
-  output = TodoVoid.execute([])
+  output = TodoVoid.new.execute
   output.should_not =~  /cab959/
 end
 
 Then "this todo should be marked finished" do
-  output = TodoVoid.execute([])
+  output = TodoVoid.new.execute
   output.should =~ /\e\[30mcab959 todo1/
 end
 
 Then "this todo should be marked current" do
-  output = TodoVoid.execute([])
+  output = TodoVoid.new.execute
   output.should =~ /\e\[32mcab959/
 end
 

@@ -25,10 +25,11 @@ describe TodoList do
     list.empty?.should == true
   end
 
-  it "removes a todo" do
+  it "can update a task" do
     list.add todo
-    list.remove(todo.id)
-    list.todo.length.should == 0
+    todo.status = :test
+    list.update(todo)
+    list.todo[todo.id].status.should == :test
   end
 
   it "finds a todo by its full hash" do
