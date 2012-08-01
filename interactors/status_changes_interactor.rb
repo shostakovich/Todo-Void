@@ -1,4 +1,12 @@
 class StatusChangesInteractor
+  class ConflictingIdsError < StandardError
+    attr_reader :conflicting_todos
+
+    def initialize(conflicting_todos)
+      @conflicting_todos = conflicting_todos
+    end
+  end
+
   def initialize(store = TodoStore.new)
     @store = store
     @list = @store.read
@@ -15,7 +23,10 @@ class StatusChangesInteractor
   private
   def change_todo_status(hash, status)
     found_todos = @list.find(hash)
-    if found_todos.length == 1
+    
+    if found_todos.length > 1
+      raise ConflictingIdsError.new(found_todos.to_array)
+    elsif found_todos.length == 1
       found_todos.todo.each do |key, todo|
         @list.remove(todo)
         todo.status = status

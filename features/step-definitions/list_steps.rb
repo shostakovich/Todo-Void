@@ -15,6 +15,7 @@ Given "I added todos" do
   add_todo "todo1"
   add_todo "todo2"
   add_todo "todo3"
+  add_todo "todo311013" # First 2 chars of ids are the same as todo3"
 end
 
 When "I run the todo command" do

@@ -28,4 +28,10 @@ class TodoList
   def remove(hash)
     @todo.delete(hash)
   end
+
+  def to_array
+    todos = []
+    @todo.each do |id, todo| todos << todo end
+    todos
+  end
 end

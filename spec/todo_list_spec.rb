@@ -11,6 +11,11 @@ describe TodoList do
     list.todo[todo.id].should be == todo
   end
 
+  it "can convert into an array" do
+    list.add todo
+    list.to_array.class.should == Array
+  end
+
   it "has a length" do
     list.add todo
     list.length.should == 1

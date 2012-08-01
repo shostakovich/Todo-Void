@@ -17,9 +17,7 @@ class TodoInteractor
   end
 
   def list_all
-    todos = []
-    @list.todo.each do |id, todo| todos << todo end
-    todos
+    @list.to_array
   end
 
   private

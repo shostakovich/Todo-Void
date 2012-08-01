@@ -18,3 +18,9 @@ Feature: Changing status of todos
     Given I added todos
     When I provide the opion "-f" plus the partial hash of a todo
     Then this todo should be marked finished
+
+  Scenario: Finish a todo by partial hash
+    Given I added todos
+    When I provide the option "-f" and a conflicting partial hash
+    Then I should see an error message
+      And I should see the list of alternatives

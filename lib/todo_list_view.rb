@@ -1,6 +1,10 @@
 require_relative "../lib/todo_view"
 
 class TodoListView
+  def self.render(todos)
+    self.new(todos).render
+  end
+
   def initialize(todos)
     @todos = todos
   end
