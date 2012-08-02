@@ -3,7 +3,7 @@
 
 A simple application to remember what to do and what you did. In the terminal, clutter free and completly unspectacular.
 
-![Screenshot](https://photos-6.dropbox.com/si/2048x1536/cYg3kkgRImscIzlwEFw9ZiYLw4FjswjGgl2BMjSV9os/7335096/1344020400/aedfec7/todo_void.jpg)
+![Screenshot](https://github.com/shostakovich/Todo-Void/raw/master/screenshot.jpg)
 
 ## Installation
 
