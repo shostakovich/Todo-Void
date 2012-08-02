@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'todo-void'
-  s.version     = '0.0.2'
-  s.date        = '2011-07-21'
+  s.version     = '0.0.3'
+  s.date        = '2011-08-02'
   s.summary     = 'Todo-Void!'
   s.description = 'A simple app to manage todos'
   s.authors     = ['Robert Curth']
@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://rubygems.org/gems/todo-void'
 
   s.add_runtime_dependency "rainbow"
+  s.add_runtime_dependency "require_relative"
   
   s.add_development_dependency "rspec"
   s.add_development_dependency "cucumber"
