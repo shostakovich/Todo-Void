@@ -17,7 +17,7 @@ class TodoVoid
     elsif flag?('-s')
       change_status(:started)
     elsif flag?('--help')
-      @output = "Help:\nt 'Mowing the lawn' in order to create a todo\n-f ID to finish a todo\n-d ID to delete a todo"
+      @output = read_help
     elsif @args[0]
       TodoInteractor.new.add_todo(@args[0])
     else
@@ -34,6 +34,11 @@ class TodoVoid
 
   def hash
     @args[1]
+  end
+
+  def read_help
+    help_template = File.join(File.dirname(__FILE__), '../templates/help')
+    File.read(help_template)
   end
 
   def change_status(status)
