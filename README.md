@@ -12,7 +12,7 @@ Todo-Void is a ruby gem. Its currently under heavy development and you should ha
 	gem install todo-void
 	
 
-## Use
+## Usage
 
 Try these commands:
 
