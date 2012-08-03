@@ -8,6 +8,10 @@ describe StatusChangesInteractor do
   let(:store) { stub(:todos => list) }
   let(:interactor) { StatusChangesInteractor.new store }
 
+  it 'it throws an error is there is no matching todo' do
+    lambda { interactor.change_status('18', :finished) }.should raise_error StatusChangesInteractor::NoTodoWithIdError
+  end
+
   context 'with conflicting ids' do
     let(:list) do
       list = TodoList.new

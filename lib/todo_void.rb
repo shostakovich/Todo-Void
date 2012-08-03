@@ -44,6 +44,8 @@ class TodoVoid
   def change_status(status)
     begin
       StatusChangesInteractor.new.change_status(hash, status)
+    rescue StatusChangesInteractor::NoTodoWithIdError
+      @output += "There is no todo with matching id"
     rescue StatusChangesInteractor::ConflictingIdsError => e
       @output += "Conflicting part of an id provided please be more specific:\n"
       @output += TodoListView.render(e.conflicting_todos)
