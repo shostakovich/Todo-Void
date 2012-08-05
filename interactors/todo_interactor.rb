@@ -1,4 +1,5 @@
 require_relative '../lib/todo_store'
+require_relative '../lib/todo_filter'
 
 class TodoInteractor
   def initialize(store = TodoStore.new)
@@ -10,6 +11,13 @@ class TodoInteractor
   end
 
   def list_all
-    @store.todos.to_array
+    todos = @store.todos.to_array
+    filter_todos(todos)
+  end
+
+  private
+  def filter_todos(todos)
+    filter = TodoFilter.new(todos) 
+    filter.with_status([:started, :pending, :finished]).recent.execute
   end
 end
