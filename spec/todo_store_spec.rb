@@ -35,6 +35,7 @@ describe TodoStore do
 
   it "updates todos" do
     store.save(todo)
+
     todo.status = :updated
     store = TodoStore.new
     store.todos.todo[todo.id].status == :updated

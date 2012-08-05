@@ -1,6 +1,7 @@
 require_relative "./todo_list"
 require_relative './todo'
 require 'fileutils'
+require 'csv'
 
 class TodoStore
   def initialize
@@ -23,31 +24,22 @@ class TodoStore
 
   private
   def read
-    todo_list = TodoList.new
-
-    FileUtils.touch(todo_file)
-    file_content = File.readlines(todo_file)
-
-    file_content.each do |line|
-      line = line.gsub("\n", "")
-      status, description = line.split "||"
-      todo = Todo.new(description)
-      todo.status = status.to_sym
-      todo_list.add todo
-    end
-
-    @list = todo_list
-  end
-
-  def write
-    serialized_todos = ""
+    @list = TodoList.new
     
-    todos = @list.todo
-    todos.each do |id, todo|
-      serialized_todos += "#{todo.status}||#{todo.description}\n"
+    data = CSV.read(todo_file)
+    data.each do |raw_todo|
+      todo = Todo.new raw_todo[0]
+      todo.status = raw_todo[1].to_sym
+      @list.add todo
     end
-
-    File.open(todo_file, "w") {|f| f.write serialized_todos }
+  end
+  
+  def write
+    CSV.open(todo_file, "w") do |csv|
+      @list.to_array.each do |task|
+        csv << [task.description, task.status]
+      end
+    end
   end
 
   def todo_file
