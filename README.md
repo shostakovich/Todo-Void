@@ -32,7 +32,6 @@ Plans for the future are:
 
 * Projects support
 * Improvements
-	* Hide done tasks after a while
 	* Recuring tasks (in a very simple way)	* Nice and polished error messages and perfect help
 	* Edit todos
 * Maybe some kind of cloud-sync / backup
