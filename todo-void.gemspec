@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://rubygems.org/gems/todo-void'
 
   s.add_runtime_dependency "rainbow"
-  s.add_runtime_dependency "require_relative"
   
   s.add_development_dependency "rspec"
   s.add_development_dependency "cucumber"

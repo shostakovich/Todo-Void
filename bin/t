@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require 'require_relative'
 require_relative '../lib/todo_void'
 
 app = TodoVoid.new(ARGV)

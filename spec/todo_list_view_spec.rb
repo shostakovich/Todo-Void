@@ -1,4 +1,3 @@
-require 'require_relative'
 require_relative "../lib/todo"
 require_relative "../lib/todo_list_view"
 
