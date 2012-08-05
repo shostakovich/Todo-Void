@@ -1,5 +1,7 @@
 # Todo-Void
-[![Build Status](https://secure.travis-ci.org/shostakovich/Todo-Void.png)](http://travis-ci.org/shostakovich/TodoVoid)
+[![Build
+Status](https://secure.travis-ci.org/shostakovich/Todo-Void.png)](http://travis-ci.org/shostakovich/TodoVoid) [![Code
+Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/shostakovich/Todo-Void)
 
 A simple application to remember what to do and what you did. In the terminal, clutter free and completly unspectacular.
 
