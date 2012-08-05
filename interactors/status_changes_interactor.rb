@@ -1,3 +1,5 @@
+require_relative '../lib/todo_filter'
+
 class StatusChangesInteractor
   class StatusChangesInteractor::NoTodoWithIdError < StandardError ; end
   class ConflictingIdsError < StandardError
@@ -20,7 +22,8 @@ class StatusChangesInteractor
   private
   def change_todo_status(hash, status)
     todos = @list.find(hash).to_array
-    
+    todos = TodoFilter.new(todos).with_status([:finished, :started, :pending]).recent.execute
+
     case todos.length
     when 0
       raise StatusChangesInteractor::NoTodoWithIdError
