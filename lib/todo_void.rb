@@ -1,4 +1,3 @@
-require 'require_relative'
 require_relative '../interactors/todo_interactor.rb'
 require_relative '../interactors/status_changes_interactor.rb'
 require_relative './todo_list_view'
