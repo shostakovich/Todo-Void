@@ -24,8 +24,9 @@ class TodoStore
 
   private
   def read
-    @list = TodoList.new
+    @list = TodoList.new 
     
+    FileUtils.touch(todo_file)
     data = CSV.read(todo_file)
     data.each do |raw_todo|
       todo = Todo.new raw_todo[0]

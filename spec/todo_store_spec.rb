@@ -12,7 +12,6 @@ end
 describe TodoStore do
   before do
     system "rm /tmp/todos"
-    system "touch /tmp/todos"
   end
 
   let(:store){ TodoStore.new }
