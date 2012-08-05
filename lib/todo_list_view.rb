@@ -23,7 +23,14 @@ class TodoListView
   end
 
   def todos_by_status(status)
-    @todos.reject {|todo| todo.status != status}
+    todos = @todos.reject {|todo| todo.status != status}
+    if status == :finished
+      todos.reject do |todo|
+        todo.finished_at < (Time.now - 86400)
+      end
+    else
+      todos
+    end
   end
 
   def render_todo(todos)

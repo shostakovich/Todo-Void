@@ -1,5 +1,6 @@
 require 'require_relative'
 require_relative '../lib/todo'
+require 'timecop'
 
 describe Todo do
   it "takes a description as argument" do
@@ -17,10 +18,20 @@ describe Todo do
     todo.status.should be == :pending
   end
 
-  it "can be finished" do
-    todo= Todo.new "Foobar"
-    todo.status = :finished
-    todo.status.should be == :finished
+  context "that is not finished" do
+    it "can be finished" do
+      todo= Todo.new "Foobar"
+      todo.status = :finished
+      todo.status.should be == :finished
+    end
+
+    it "creates a timestamp when it was finished" do
+      todo  = Todo.new "Foo"
+      Timecop.freeze do
+        todo.status = :finished
+        todo.finished_at.should == Time.now
+      end
+    end
   end
 end
 

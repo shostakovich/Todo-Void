@@ -2,7 +2,7 @@ require 'openssl'
 
 class Todo
   attr_reader :description
-  attr_accessor :status
+  attr_accessor :status, :finished_at
 
   def initialize(description)
     @description = description
@@ -13,5 +13,12 @@ class Todo
     description_hash = OpenSSL::Digest::SHA1.new(@description)
     description_hash = description_hash.hexdigest
     description_hash.slice(0..5)
+  end
+
+  def status=(status)
+    @status = status
+    if status == :finished && finished_at.nil?
+      @finished_at = Time.now
+    end
   end
 end

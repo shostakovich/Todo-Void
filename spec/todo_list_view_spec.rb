@@ -22,4 +22,11 @@ describe TodoListView do
     todos = [finished_todo, pending_todo]
     TodoListView.render(todos).should =~ /#{pending_todo.id}.*#{finished_todo.id}/m
   end
+
+  it "hides the todos that are finished longer then one day" do
+    finished_todo = Todo.new "Very old todo"
+    finished_todo.status = :finished
+    finished_todo.finished_at = Date.parse('1989-12-06')
+    TodoListView.render([finished_todo]).should be_empty
+  end
 end

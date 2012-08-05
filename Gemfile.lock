@@ -28,6 +28,7 @@ GEM
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.11.0)
     slop (2.4.4)
+    timecop (0.3.5)
 
 PLATFORMS
   ruby
@@ -38,3 +39,4 @@ DEPENDENCIES
   rainbow
   require_relative
   rspec
+  timecop

@@ -29,6 +29,9 @@ class TodoStore
     data = CSV.read(todo_file)
     data.each do |raw_todo|
       todo = Todo.new raw_todo[0]
+      unless raw_todo[2].nil?
+        todo.finished_at =  DateTime.parse(raw_todo[2]).to_time
+      end
       todo.status = raw_todo[1].to_sym
       @list.add todo
     end
@@ -37,7 +40,7 @@ class TodoStore
   def write
     CSV.open(todo_file, "w") do |csv|
       @list.to_array.each do |task|
-        csv << [task.description, task.status]
+        csv << [task.description, task.status, task.finished_at]
       end
     end
   end

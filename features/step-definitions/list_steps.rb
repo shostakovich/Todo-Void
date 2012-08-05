@@ -1,5 +1,6 @@
 require_relative '../../interactors/todo_interactor'
 require_relative '../../lib/todo_void'
+require 'timecop'
 
 def add_todo(todo)
   TodoInteractor.new.add_todo(todo)
@@ -30,4 +31,18 @@ end
 
 Then "every todo should have a unique number in front of it" do
   @output.should =~ /cab959/
+end
+
+When /^I finish a todo$/ do
+  TodoVoid.new(["-f", "cab"]).execute
+end
+
+When /^I run the command the next day$/ do
+ Timecop.freeze(Time.now + 86401) do
+    @output = TodoVoid.new.execute
+  end
+end
+
+Then /^I should see not see the finished todo$/ do
+  @output.should_not =~ /cab959/
 end
