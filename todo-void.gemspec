@@ -4,9 +4,11 @@ Gem::Specification.new do |s|
   s.date        = '2011-08-02'
   s.summary     = 'Todo-Void!'
   s.description = 'A simple app to manage todos'
-  s.authors     = ['Robert Curth']
+  s.author     = 'Robert Curth'
   s.email       = 'robert@rocu.de'
   s.license     = 'MIT'
+  s.post_install_message = "Enter t 'Mowing the lawn' to create your first task!"
+
 
   s.executables = ["t"]
   s.files = Dir['lib/*.rb'] + Dir['bin/*'] + Dir['interactors/*.rb']
