@@ -24,20 +24,23 @@ class TodoStore
 
   private
   def read
-    @list = TodoList.new 
-    
     FileUtils.touch(todo_file)
     data = CSV.read(todo_file)
-    data.each do |raw_todo|
-      todo = Todo.new raw_todo[0]
-      unless raw_todo[2].nil?
-        todo.finished_at =  DateTime.parse(raw_todo[2]).to_time
-      end
-      todo.status = raw_todo[1].to_sym
-      @list.add todo
+    todos = data.map do |raw_todo|
+      convert_raw_todo(raw_todo)
     end
+    @list = TodoList.new(todos)
   end
-  
+ 
+  def convert_raw_todo(raw_todo)
+    todo = Todo.new raw_todo[0]
+    unless raw_todo[2].nil?
+      todo.finished_at =  DateTime.parse(raw_todo[2]).to_time
+    end
+    todo.status = raw_todo[1].to_sym
+    todo
+  end
+
   def write
     CSV.open(todo_file, "w") do |csv|
       @list.each do |todo|
