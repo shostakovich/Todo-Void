@@ -19,13 +19,6 @@ describe TodoList do
     list.empty?.should == true
   end
 
-  it "can update a task" do
-    list.add todo
-    todo.status = :test
-    list.update(todo)
-    list.include?(todo).should be_true
-  end
-
   it "prevents duplication of todos" do
     list.add todo
     list.add todo

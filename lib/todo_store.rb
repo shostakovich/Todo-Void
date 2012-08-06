@@ -13,7 +13,8 @@ class TodoStore
   end
 
   def update(todo)
-    @list.update(todo)
+    @list.delete(todo)
+    @list.add(todo)
     write
   end
 
