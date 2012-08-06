@@ -1,3 +1,5 @@
+require_relative './todo_list'
+
 class TodoFilter
   def initialize(todos)
     @todos = todos.dup
@@ -24,7 +26,7 @@ class TodoFilter
   end
 
   def execute
-    @todos
+    TodoList.new(@todos)
   end
 
   private

@@ -9,7 +9,7 @@ describe TodoFilter do
     deleted_todo.status = :deleted
 
     filter = TodoFilter.new([pending_todo, deleted_todo])
-    filter.execute.should == [pending_todo]
+    filter.execute.should == TodoList.new([pending_todo])
   end
 
   it "can filter by many statuses" do
@@ -23,7 +23,7 @@ describe TodoFilter do
 
     filter = TodoFilter.new([started_todo, finished_todo, pending_todo])
     todos = filter.with_status([:started, :pending]).execute
-    todos.should == [started_todo, pending_todo]
+    todos.should == TodoList.new([started_todo, pending_todo])
   end
 
   it "can remove todos that have an old finished_at flag" do
@@ -34,6 +34,6 @@ describe TodoFilter do
     old_todo.status = :finished
 
     filter = TodoFilter.new([new_todo, old_todo])
-    filter.recent.execute.should  == [new_todo]
+    filter.recent.execute.should  == TodoList.new([new_todo])
   end
 end

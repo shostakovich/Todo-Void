@@ -11,7 +11,7 @@ class TodoInteractor
   end
 
   def list_all
-    todos = @store.todos.to_array
+    todos = @store.todos
     filter_todos(todos)
   end
 

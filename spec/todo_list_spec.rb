@@ -7,12 +7,7 @@ describe TodoList do
 
   it "accepts a todo" do
     list.add todo
-    list.todo[todo.id].should be == todo
-  end
-
-  it "can convert into an array" do
-    list.add todo
-    list.to_array.class.should == Array
+    list.include?(todo).should be_true
   end
 
   it "has a length" do
@@ -28,24 +23,24 @@ describe TodoList do
     list.add todo
     todo.status = :test
     list.update(todo)
-    list.todo[todo.id].status.should == :test
+    list.include?(todo).should be_true
   end
 
   it "finds a todo by its full hash" do
     list.add todo
     result = list.find(todo.id)
-    result.todo[todo.id].should == todo
+    result.include?(todo).should be_true
   end
 
   it "finds a todo by a part of the hash" do
     list.add todo
     result = list.find(todo.id.slice(0..2))
-    result.todo[todo.id].should == todo
+    result.include?(todo).should be_true
   end
 
   it "prevents duplication of todos" do
     list.add todo
     list.add todo
-    list.todo.length.should == 1
+    list.length.should == 1
   end
 end

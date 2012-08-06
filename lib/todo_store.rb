@@ -40,8 +40,8 @@ class TodoStore
   
   def write
     CSV.open(todo_file, "w") do |csv|
-      @list.to_array.each do |task|
-        csv << [task.description, task.status, task.finished_at]
+      @list.each do |todo|
+        csv << [todo.description, todo.status, todo.finished_at]
       end
     end
   end
