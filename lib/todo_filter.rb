@@ -6,6 +6,11 @@ class TodoFilter
     @todos.reject! { |todo| todo.status == :deleted }
   end
 
+  def with_hash(search)
+    @todos.reject! { |todo| not /^#{search}/.match(todo.id) }
+    self
+  end
+
   def with_status(statuses)
     result = []
     statuses.each do |status|

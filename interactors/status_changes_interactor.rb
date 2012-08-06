@@ -21,8 +21,11 @@ class StatusChangesInteractor
 
   private
   def change_todo_status(hash, status)
-    todos = @list.find(hash)
-    todos = TodoFilter.new(todos).with_status([:finished, :started, :pending]).recent.execute
+    todos = TodoFilter.new(@list)
+                      .with_hash(hash)
+                      .with_status([:finished, :started, :pending])
+                      .recent
+                      .execute
     todos = todos.to_a
 
     case todos.length

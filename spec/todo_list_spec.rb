@@ -26,18 +26,6 @@ describe TodoList do
     list.include?(todo).should be_true
   end
 
-  it "finds a todo by its full hash" do
-    list.add todo
-    result = list.find(todo.id)
-    result.include?(todo).should be_true
-  end
-
-  it "finds a todo by a part of the hash" do
-    list.add todo
-    result = list.find(todo.id.slice(0..2))
-    result.include?(todo).should be_true
-  end
-
   it "prevents duplication of todos" do
     list.add todo
     list.add todo
