@@ -6,7 +6,7 @@ class TodoInteractor
     @store = store
   end
   
-  def add_todo(description)
+  def add_todo(description, tags=[])
     @store.save(Todo.new(description))
   end
 
