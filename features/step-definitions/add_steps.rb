@@ -22,3 +22,12 @@ Then "the todo should appear in the list of todos" do
   output = TodoVoid.new.execute
   output.should =~/#{@todo_name}/
 end
+
+When /^I add a todo with a tag$/ do
+  TodoVoid.new(["Mowing the lawn", "--tags='apple,iphone'"]).execute
+end
+
+Then /^next to it I should see the tag$/ do
+  output = TodoVoid.new.execute
+  output.should =~ /\(apple, iphone\)/
+end
