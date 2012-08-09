@@ -2,11 +2,12 @@ require 'openssl'
 
 class Todo
   attr_reader :description
-  attr_accessor :status, :finished_at
+  attr_accessor :tags, :status, :finished_at
 
   def initialize(description)
     @description = description
     @status = :pending
+    @tags = []
   end
 
   def id
