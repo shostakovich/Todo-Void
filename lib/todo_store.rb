@@ -38,6 +38,9 @@ class TodoStore
     unless raw_todo[2].nil?
       todo.finished_at =  DateTime.parse(raw_todo[2]).to_time
     end
+    unless raw_todo[3].nil?
+      todo.tags = raw_todo[3].split('|')
+    end
     todo.status = raw_todo[1].to_sym
     todo
   end
@@ -45,7 +48,8 @@ class TodoStore
   def write
     CSV.open(todo_file, "w") do |csv|
       @list.each do |todo|
-        csv << [todo.description, todo.status, todo.finished_at]
+        tags = todo.tags.join('|')
+        csv << [todo.description, todo.status, todo.finished_at, tags]
       end
     end
   end

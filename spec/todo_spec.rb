@@ -12,6 +12,12 @@ describe Todo do
     todo.id.should be == "275f60"
   end
 
+  it "can have tags" do
+    todo = Todo.new "Foobar"
+    todo.tags = ['a', 'b']
+    todo.tags.should == ['a', 'b']
+  end
+
   it "is pending once created" do
     todo = Todo.new "Foobar"
     todo.status.should be == :pending

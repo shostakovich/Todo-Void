@@ -3,7 +3,8 @@ require_relative '../interactors/status_changes_interactor.rb'
 require_relative './todo_list_view'
 
 class TodoVoid
-  def initialize(args=[])
+  def initialize(args=[], interactor = TodoInteractor.new)
+    @todo_interactor = interactor
     @args = args
     @output = ""
   end
@@ -18,7 +19,8 @@ class TodoVoid
     elsif flag?('--help')
       @output = read_help
     elsif @args[0]
-      TodoInteractor.new.add_todo(@args[0])
+      tags = extract_tags(@args[1])
+      @todo_interactor.add_todo(@args[0], tags)
     else
       todos = TodoInteractor.new.list_all
       @output = TodoListView.render(todos)
@@ -29,6 +31,15 @@ class TodoVoid
   private
   def flag?(flag)
     @args[0] == flag
+  end
+
+  def extract_tags(tag_arg)
+    return [] unless tag_arg
+    
+    flag, tags = tag_arg.split("=")
+    tags = tags.gsub("'", "")
+    tags = tags.split(',')
+    tags.map! {|tag| tag.strip}
   end
 
   def hash
