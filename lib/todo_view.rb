@@ -13,8 +13,9 @@ class TodoView
     else
       "#{@todo.id.foreground(:yellow)} #{@todo.description}"
     end
-
-    output += " (#{@todo.tags.join(', ')})".foreground(:green) unless @todo.tags.empty?
+    unless @todo.tags.empty?
+      output += " (#{@todo.tags.join(', ')})".foreground(:green)
+    end
     output
   end
 end

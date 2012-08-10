@@ -27,7 +27,7 @@ class TodoVoid
     end
     @output
   end
-  
+
   private
   def flag?(flag)
     @args[0] == flag
@@ -35,7 +35,7 @@ class TodoVoid
 
   def extract_tags(tag_arg)
     return [] unless tag_arg
-    
+
     flag, tags = tag_arg.split("=")
     tags = tags.gsub("'", "")
     tags = tags.split(',')

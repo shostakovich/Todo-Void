@@ -32,7 +32,7 @@ class TodoStore
     end
     @list = TodoList.new(todos)
   end
- 
+
   def convert_raw_todo(raw_todo)
     todo = Todo.new raw_todo[0]
     unless raw_todo[2].nil?
