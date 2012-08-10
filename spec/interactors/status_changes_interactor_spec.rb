@@ -1,3 +1,4 @@
+require_relative '../spec_helper'
 require_relative '../../interactors/status_changes_interactor'
 require_relative '../../lib/todo_list'
 require_relative '../../lib/todo'

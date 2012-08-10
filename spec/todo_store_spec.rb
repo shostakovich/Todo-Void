@@ -1,3 +1,4 @@
+require_relative './spec_helper'
 require_relative '../lib/todo_store'
 require_relative '../lib/todo'
 

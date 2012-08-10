@@ -1,3 +1,4 @@
+require_relative './spec_helper'
 require_relative '../lib/todo'
 require_relative '../lib/todo_filter'
 
@@ -20,7 +21,7 @@ describe TodoFilter do
   it "can filter by many statuses" do
     finished_todo = Todo.new("Finished")
     finished_todo.status = :finished
-    
+
     filter = TodoFilter.new([started_todo, finished_todo, pending_todo])
     todos = filter.with_status([:started, :pending]).execute
     todos.should == TodoList.new([started_todo, pending_todo])

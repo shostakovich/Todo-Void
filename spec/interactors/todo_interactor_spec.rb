@@ -1,3 +1,4 @@
+require_relative '../spec_helper'
 require_relative '../../interactors/todo_interactor'
 
 describe TodoInteractor do
@@ -10,7 +11,7 @@ describe TodoInteractor do
         todo.tags.should == ['foobar']
         todo.description == 'Foobar'
       end
-      
+
       interactor.add_todo("Foobar", ["foobar"])
     end
   end
