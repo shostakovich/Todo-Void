@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'todo-void'
-  s.version     = '0.1.1'
-  s.date        = '2011-08-02'
+  s.version     = '0.1.2.alpha'
+  s.date        = '2011-08-10'
   s.summary     = 'Todo-Void!'
   s.description = 'A simple app to manage todos'
   s.author     = 'Robert Curth'
