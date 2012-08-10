@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.post_install_message = "Enter t 'Mowing the lawn' to create your first task!"
 
+  s.required_ruby_version = '>= 1.9.2'
 
   s.executables = ["t"]
   s.files = Dir['lib/*.rb'] + Dir['bin/*'] + Dir['interactors/*.rb']
