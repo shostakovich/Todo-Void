@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     builder (3.0.0)
+    cane (1.4.0)
     coderay (1.0.7)
     cucumber (1.2.1)
       builder (>= 2.1.2)
@@ -38,6 +39,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cane
   cucumber
   pry
   rainbow
