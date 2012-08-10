@@ -4,7 +4,7 @@ require_relative '../lib/todo_filter'
 
 describe TodoFilter do
   let(:pending_todo){ Todo.new("Mow the lawn") }
-  let(:started_todo) do 
+  let(:started_todo) do
     todo = Todo.new "Started"
     todo.status = :started
     todo

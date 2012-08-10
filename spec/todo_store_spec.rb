@@ -31,7 +31,7 @@ describe TodoStore do
 
     store = TodoStore.new
     saved_todo = store.todos.to_a[0]
-    
+
     saved_todo.id.should == todo.id
     saved_todo.status.should == todo.status
     saved_todo.tags.should == todo.tags

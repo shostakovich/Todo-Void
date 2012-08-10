@@ -8,7 +8,7 @@ describe TodoView do
     TodoView.new(todo).render.should =~ /#{todo.id}/
     TodoView.new(todo).render.should =~ /#{todo.description}/
   end
-  
+
   context "when it renders a todo with tags" do
     it "appends them at the end" do
       todo = Todo.new('With tags')

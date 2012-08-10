@@ -8,7 +8,7 @@ class TodoView
   def render
     output = "#{formated_id} #{@todo.description}"
     output += tags
-    mark_if_finished(output) 
+    mark_if_finished(output)
   end
 
   private
