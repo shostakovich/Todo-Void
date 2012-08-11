@@ -3,5 +3,5 @@ When /^I provide the option "\-\-help$/ do
 end
 
 Then /^I should get help on how to use the program$/ do
-  @output.should =~ /Basic Usage/
+  @output.should =~ /Add todos/
 end
