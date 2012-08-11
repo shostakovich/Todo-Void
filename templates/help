@@ -1,5 +1,10 @@
-= Basic Usage =
+= Add todos =
+ 
  * t "Mow the lawn" (Add todo)
+ * t "Be happy" --tags="happy"
+
+== List todos ==
+ 
  * t (Show all todos)
 
 == Change todos ==
@@ -9,5 +14,6 @@
  * t -d TodoId (Delete todo)
 
  For all these command u can provide partial ids:
+
  * t -s 4s
  * t -s 4s6d84

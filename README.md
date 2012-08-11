@@ -19,6 +19,7 @@ Todo-Void is a ruby gem. Its currently under heavy development and you should ha
 Try these commands:
 
 * t "Mow the lawn" (Add todo)
+* t "Buy new stuff to read" --tags="vacation, reading" (Adds a todo with tags)
 * t (Show all todos)
 * t -s 41 (Start todo)
 * t -f 41 (Finish todos)
@@ -30,9 +31,8 @@ You may also look this up in the /features directory within the source code.
 
 Plans for the future are:
 
-* Projects support
 * Improvements
-	* Recuring tasks (in a very simple way)	* Nice and polished error messages and perfect help
+	* Recuring tasks (in a very simple way)
 	* Edit todos
 * Maybe some kind of cloud-sync / backup
 
