@@ -13,7 +13,7 @@
  * t -f TodoId (Finish todo)
  * t -d TodoId (Delete todo)
 
- For all these command u can provide partial ids:
+ For all these command you can provide partial ids:
 
  * t -s 4s
  * t -s 4s6d84
